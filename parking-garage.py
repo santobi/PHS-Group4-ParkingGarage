@@ -36,4 +36,11 @@ class ParkingGarage:
 
     
 
-    
+    def park(self):
+       self.new_space = ticket.pop(0)
+       self.space.append(new_space)
+       self.occupied_space(new_space)
+
+    def payForParking(self):
+        paid_spaces = int(input("What number space are you in?"))
+        print()
