@@ -50,7 +50,12 @@ class ParkingGarage:
     def payForParking(self):
         #finds the space the user wants to pay for
         print(f'The Following Spaces Are Occupied:\n{self.occupied}')
-        parking_space = int(input("What number space are you in?")) #Possibly add Try and Accept
+        while True:
+            try:
+                parking_space = int(input("What number space are you in?")) #Possibly add Try and Accept
+                break
+            except ValueError:
+                print("Whoops! It looks like you didn't type a valid space. Please type a valid space number")
         #confirm the user wants to pay
         ##TODO - check if the space they want to pay is currently paid or unpaid, if paid, prompt them they dont need to pay twice
         pay = input("Please type 'Y' to pay")
