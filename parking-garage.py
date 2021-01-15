@@ -47,30 +47,47 @@ class ParkingGarage:
 #when paying for parking, changes dictionary value for key (space)
     def payForParking(self):
         #finds the space the user wants to pay for
-        parking_space = int(input("What number space are you in?"))
-        print(self.space)
+        print(f'The Following Spaces Are Full:\n{self.space}')
+        parking_space = int(input("What number space are you in?")) #Possibly add Try and Accept
+        
         #confirm the user wants to pay
         pay = input("Please type 'Y' to pay")
         #toggles the value for the key in the paid dict from unpaid to paid
         if pay.lower() == "y":
             self.paid[parking_space] = "paid"
-        print("Thank you for paying! Your ticket has now been marked as paid.")
-        print(self.paid.items(parking_space))
+        print(f'Your ticket for space "{parking_space}" has now been marked as "{self.paid[parking_space]}"')
 
     def leaveGarage(self):
-        self.
-        self.space.remove(paid_space)
-        self.ticket.append(paid_space)
-        self.ticket.sort()
+        print(f'The Following Spaces Are Full:\n{self.space}')
+        paid_space = int(input("What number space are you in?"))
+        if self.paid[paid_space] == 'paid':
+
+            self.space.remove(paid_space)
+            self.ticket.append(paid_space)
+            self.ticket.sort()
+        else:
+            command = input("Would you like to pay y/ n?: ")
+            if command.lower() == "n":
+                print("Goodbye")
+                # break
+            elif command.lower == "y":
+                self.payForParking()
+
+
 
 capitolParkingGarage = ParkingGarage([1,2,3,4,5,6,7,8,9,10],[],{})
 def run():
     while True:
-        action = input("Welcome to the parking garage! What would you like to do today \n Park/Pay/Leave")
-        if action.lower() == "park":
+        action = input("Welcome to the parking garage! What would you like to do today \n Park/Pay/Leave/quit: ")
+        if action.lower() == "quit":
+            print("GoodBye")
+            break
+        elif action.lower() == "park":
             capitolParkingGarage.park()
         elif action.lower() == "pay":
             capitolParkingGarage.payForParking()
         elif action.lower() == "leave":
             capitolParkingGarage.leaveGarage()
+        else:
+            print("Not a valid entry try again: ")
 run()
