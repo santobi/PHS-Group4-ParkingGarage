@@ -40,21 +40,36 @@ class ParkingGarage:
    - This should decrease the amount of tickets available by 1
    - This should decrease the amount of parkingSpaces available by 1'''
         new_space = self.ticket.pop(0) #removes one/index value from tickets list 
+        print(f'You can now park at space {new_space}. Please enjoy your parking! \n')
         self.space.append(new_space)
         self.paid[new_space] = "Unpaid"
 
 #when paying for parking, changes dictionary value for key (space)
     def payForParking(self):
-        paid_space = int(input("What number space are you in?"))
-        print(spaces)
-        space.remove(paid_space)
-        ticket.append(paid_space)
-        ticket.sort()
+        parking_space = int(input("What number space are you in?"))
+        print(self.space)
+        pay = input("Please type Y to pay")
+            #toggles teh value for the key in the paid dict from unpaid to paid
+        if pay.lower() == "y": 
+            self.paid[paid_space] = "paid"
+        else: 
+            break
+            print("Thank you for paying! Your ticket is now marked as paid.")
+        self.space.remove(paid_space)
+        self.ticket.append(paid_space)
+        self.ticket.sort()
 
 
 
-garageSession = ParkingGarage([10],[],{})
-run()
+capitalParkingGarage = ParkingGarage([1,2,3,4,5,6,7,8,9,10],[],{})
+def run()
+    while True: 
+        action = input("Whelcome to the parking garage! What would you like ti do today \n Park/Pay/Leave ")
+        if action.lower == "park": 
+            capitalParkingGarage.park()
+        if action.lower() == "pay": 
+            capitalParkingGarage.payForParking()
+
     if quit
         quit
     if Parking
