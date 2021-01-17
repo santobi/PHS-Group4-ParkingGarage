@@ -67,7 +67,12 @@ class ParkingGarage:
 
     def leaveGarage(self):
         print(f'The Following Spaces Are Full:\n{self.occupied}')
-        paid_space = int(input("What number space are you in?"))
+        while True:
+            try:
+                paid_space = int(input("What number space are you in?")) #Possibly add Try and Accept
+                break
+            except ValueError:
+                print("Whoops! It looks like you didn't type a valid space. Please type a valid space number")
         if self.paid_dict[paid_space] == 'paid':
 
             self.occupied.remove(paid_space)
