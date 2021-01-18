@@ -1,6 +1,6 @@
 class ParkingGarage: 
-    def __init__(self,ticket, space, paid): 
-        self.ticket = ticket
+    def __init__(self,available, space, paid): 
+        self.available = available
         self.space = space 
         self.paid = paid 
     
