@@ -46,11 +46,6 @@ class ParkingGarage:
 #when paying for parking, changes dictionary value for key (space)
     def payForParking(self):
         #finds the space the user wants to pay for
-<<<<<<< HEAD
-        print(f'The Following Spaces Are Full:\n{self.space}')
-        parking_space = int(input("What number space are you in?")) #Possibly
-        
-=======
         print(f'The Following Spaces Are Occupied:\n{self.occupied}')
         while True:
             try:
@@ -60,24 +55,10 @@ class ParkingGarage:
             else:
                 if parking_space not in self.occupied:
                     print("That space is not currently occupied, please input a valid space number")
->>>>>>> c302ceceaa6aaec908ccfadb616ac82e86566b4c
         #confirm the user wants to pay
         pay = input("Please type 'Y' to pay")
         #toggles the value for the key in the paid dict from unpaid to paid
         if pay.lower() == "y":
-<<<<<<< HEAD
-            self.paid[parking_space] = "paid"
-        print(f'Your ticket for space "{parking_space}" has now been marked as "{self.paid[parking_space]}"')
-
-    def leaveGarage(self):
-        print(f'The Following Spaces Are Full:\n{self.space}')
-        paid_space = int(input("What number space are you in?"))
-        if self.paid[paid_space] == 'paid':
-
-            self.space.remove(paid_space)
-            self.ticket.append(paid_space)
-            self.ticket.sort()
-=======
     
             self.paid_dict[parking_space] = "paid"
         print(f'Your ticket for space "{parking_space}" has now been marked as "{self.paid_dict[parking_space]}". You have 15 minutes to leave your space.')
@@ -99,7 +80,6 @@ class ParkingGarage:
             self.occupied.remove(paid_space)
             self.available.append(paid_space)
             self.available.sort()
->>>>>>> c302ceceaa6aaec908ccfadb616ac82e86566b4c
         else:
             command = input("Your parking has not yet been paid for, would you like to pay y/ n?: ")
             if command.lower() == "n":
@@ -107,12 +87,8 @@ class ParkingGarage:
                 # break
             elif command.lower == "y":
                 self.payForParking()
-<<<<<<< HEAD
-
-=======
             ##TODO print statement to thank them for paying and havie a nice day
         ##TODO - delete corresponding dict entry for space
->>>>>>> c302ceceaa6aaec908ccfadb616ac82e86566b4c
 
 
 capitolParkingGarage = ParkingGarage([1,2,3,4,5,6,7,8,9,10],[],{})
