@@ -1,5 +1,4 @@
 '''
-
 Parking garage class with a few methods 
 Garage class: 
 attributes: 
@@ -52,39 +51,46 @@ class ParkingGarage:
         print(f'The Following Spaces Are Occupied:\n{self.occupied}')
         while True:
             try:
-                parking_space = int(input("What number space are you in?")) #Possibly add Try and Accept
-                break
+                parking_space = int(input("What number space are you in?")) 
             except ValueError:
                 print("Whoops! It looks like you didn't type a valid space. Please type a valid space number")
+            else:
+                if parking_space not in self.occupied:
+                    print("That space is not currently occupied, please input a valid space number")
         #confirm the user wants to pay
         ##TODO - check if the space they want to pay is currently paid or unpaid, if paid, prompt them they dont need to pay twice
         pay = input("Please type 'Y' to pay")
         #toggles the value for the key in the paid dict from unpaid to paid
         if pay.lower() == "y":
+    
             self.paid_dict[parking_space] = "paid"
-        print(f'Your ticket for space "{parking_space}" has now been marked as "{self.paid_dict[parking_space]}"')
+        print(f'Your ticket for space "{parking_space}" has now been marked as "{self.paid_dict[parking_space]}". You have 15 minutes to leave your space.')
         ##TODO, bring them right to the leave function????
 
     def leaveGarage(self):
         print(f'The Following Spaces Are Full:\n{self.occupied}')
         while True:
             try:
-                paid_space = int(input("What number space are you in?")) #Possibly add Try and Accept
+                paid_space = int(input("What number space are you in?")) 
                 break
             except ValueError:
                 print("Whoops! It looks like you didn't type a valid space. Please type a valid space number")
+            else:
+                if parking_space not in self.occupied:
+                print("That space is not currently occupied, please input a valid space number")
+        #if ticket is paid, they person leaves ###TODO add in print statements to show they left
         if self.paid_dict[paid_space] == 'paid':
-
             self.occupied.remove(paid_space)
             self.available.append(paid_space)
             self.available.sort()
         else:
-            command = input("Would you like to pay y/ n?: ")
+            command = input("Your parking has not yet been paid for, would you like to pay y/ n?: ")
             if command.lower() == "n":
                 print("Goodbye")
                 # break
             elif command.lower == "y":
                 self.payForParking()
+            ##TODO print statement to thank them for paying and havie a nice day
         ##TODO - delete corresponding dict entry for space
 
 
