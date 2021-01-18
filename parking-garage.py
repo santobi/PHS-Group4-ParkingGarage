@@ -7,7 +7,7 @@ class ParkingGarage:
 #when a person wants tp park, takes a ticket out of list, assignees that ticket number to a space, adds the space number to the dictionary with value of unpaid
     def park(self):
         if len(self.available) == 0: 
-            print('Sorry. Our parking garage is full!')
+            print('Sorry. Our parking garage is full! \n')
         else: 
             parking_space = self.available.pop(0) #removes the first available space from the tickets list 
             print(f"You can now park at space {parking_space}. Please enjoy your parking! \n")
@@ -24,28 +24,24 @@ class ParkingGarage:
         while True:
             try:
                 parking_space = int(input("What number space are you in? "))
-                break 
-            except ValueError:
-                print("Whoops! It looks like you didn't type a valid space. Please type a valid space number")
-            else:
                 if parking_space not in self.occupied:
                     print("That space is not currently occupied, please input a valid space number")
+                else:
+                    break
+            except ValueError:
+                print("Whoops! It looks like you didn't type a valid space. Please type a valid space number")
+                
         #confirm the user wants to pay
 
-        
         if self.paid_dict[parking_space] == "paid": 
             print('This ticket has already been paid')
         else:
             print('This ticket requires payment')
-        
             pay = input("Please type 'Y' to pay ")
             #toggles the value for the key in the paid dict from unpaid to paid
             if pay.lower() == "y":
-
                 self.paid_dict[parking_space] = "paid"
             print(f'Your ticket for space "{parking_space}" has now been marked as "{self.paid_dict[parking_space]}". You have 15 minutes to leave your space.')
-            ##TODO, bring them right to the leave function????
-
 
 
     def leaveGarage(self):
@@ -53,34 +49,37 @@ class ParkingGarage:
         while True:
             try:
                 paid_space = int(input("Please enter the parking space number of your pre-paid ticket? ")) 
-                break
+                if paid_space not in self.occupied:
+                    print("That space is not currently occupied, please input a valid space number: ")
+                else:
+                    break
             except ValueError:
                 print("Whoops! It looks like you didn't type a valid space. Please type a valid space number")
-            else:
-                if parking_space not in self.occupied:
-                    print("That space is not currently occupied, please input a valid space number: ")
-        #if ticket is paid, they person leaves ###TODO add in print statements to show they left
+                
+        #if ticket is paid, they person leaves 
         if self.paid_dict[paid_space] == 'paid':
             self.occupied.remove(paid_space)
             self.available.append(paid_space)
             self.available.sort()
             del self.paid_dict[paid_space]
-            print("Thank you safe travels :)")
+            print("Thank you safe travels :) \n")
         else:
             command = input("Your parking has not yet been paid for, would you like to pay y/ n?: ")
             if command.lower() == "n":
-                print("Goodbye")
+                print("Goodbye \n")
                 # break
             elif command.lower() == "y":
                 self.payForParking()
 
-
-
+    def showBook(self):
+        print("Here's the list of current occupied spaces and their pad status ")
+        print(self.paid_dict)
+        print("\n")
 
 capitolParkingGarage = ParkingGarage([1,2,3,4,5,6,7,8,9,10],[],{})
 def run():
     while True:
-        action = input("Welcome to the parking garage! What would you like to do today \n Park/Pay/Leave/quit: ")
+        action = input("Welcome to the parking garage! What would you like to do today \n Park/Pay/Leave/Show/Quit: ")
         if action.lower() == "quit":
             print("GoodBye")
             break
@@ -90,6 +89,8 @@ def run():
             capitolParkingGarage.payForParking()
         elif action.lower() == "leave":
             capitolParkingGarage.leaveGarage()
+        elif action.lower() == "show":
+            capitolParkingGarage.showBook()
         else:
-            print("Not a valid entry try again: ")
+            print("Not a valid entry, please try again: ")
 run()
