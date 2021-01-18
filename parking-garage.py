@@ -1,8 +1,8 @@
 class ParkingGarage: 
-    def __init__(self,available, space, paid): 
+    def __init__(self,available, occupied, paid_dict): 
         self.available = available
-        self.space = space 
-        self.paid = paid 
+        self.occupied = occupied 
+        self.paid_dict = paid_dict
     
 #when a person wants tp park, takes a ticket out of list, assignees that ticket number to a space, adds the space number to the dictionary with value of unpaid
     def park(self):
