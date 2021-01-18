@@ -5,16 +5,6 @@ class ParkingGarage:
         self.paid = paid 
     
 #when a person wants tp park, takes a ticket out of list, assignees that ticket number to a space, adds the space number to the dictionary with value of unpaid
-<<<<<<< HEAD
-    def park(self): 
-        '''
-   - This should decrease the amount of tickets available by 1
-   - This should decrease the amount of parkingSpaces available by 1''' 
-        new_space = self.ticket.pop(0) #removes one/index value from tickets list 
-        print(f"You can now park at space {new_space}. Please enjoy your parking! \n")
-        self.space.append(new_space)
-        self.paid[new_space] = "Unpaid"
-=======
     def park(self):
         if len(self.available) == 0: 
             print('Sorry. Our parking garage is full!')
@@ -26,7 +16,6 @@ class ParkingGarage:
             #creates dictionary entry for the space and marks the value as unpaid
             self.paid_dict[parking_space] = "Unpaid"
         
->>>>>>> 5ad74bc6e1ceb245047dc95f101795875b535bbc
 
 #when paying for parking, changes dictionary value for key (space)
     def payForParking(self):
@@ -42,15 +31,6 @@ class ParkingGarage:
                 if parking_space not in self.occupied:
                     print("That space is not currently occupied, please input a valid space number")
         #confirm the user wants to pay
-<<<<<<< HEAD
-        pay = input("Please type 'Y' to pay")
-        #toggles the value for the key in the paid dict from unpaid to paid
-        if pay.lower() == "y":
-    
-            self.paid_dict[parking_space] = "paid"
-        print(f'Your ticket for space "{parking_space}" has now been marked as "{self.paid_dict[parking_space]}". You have 15 minutes to leave your space.')
-        ##TODO, bring them right to the leave function????
-=======
 
         
         if self.paid_dict[parking_space] == "paid": 
@@ -67,7 +47,6 @@ class ParkingGarage:
             ##TODO, bring them right to the leave function????
 
 
->>>>>>> 5ad74bc6e1ceb245047dc95f101795875b535bbc
 
     def leaveGarage(self):
         print(f'The Following Spaces Are Full:\n{self.occupied}')
