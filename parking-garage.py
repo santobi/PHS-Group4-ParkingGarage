@@ -92,10 +92,5 @@ def run():
         elif action.lower() == "show":
             capitolParkingGarage.showBook()
         else:
-<<<<<<< HEAD
-            print("Not a valid entry try again: ")
-run()
-=======
             print("Not a valid entry, please try again: ")
 run()
->>>>>>> e110ff3a56da415562a3e9019ba76afe4eb25caa
